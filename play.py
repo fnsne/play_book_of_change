@@ -29,10 +29,15 @@ def mod4(left, right):
 
 def detect_ood(rem):
     print "\n--------歸奇"
-    if (rem/4) -- 1:
+    if (rem/4) == 1:
         return 1
     else:
         return 0
+def print_ood_even(num):
+    if num%2 == 1:
+        print "奇"
+    else:
+        print "偶"
 
 def main():
     total = 50
@@ -57,11 +62,8 @@ def main():
        print "叻 :", rem, "\n"
        total -= rem
        temp[i] = detect_ood(rem)
-
-       if temp[i] == 1:
-           print "奇"
-       else:
-           print "偶"
+    for i in range(0,3):
+       print_ood_even(temp[i])
     
 if __name__ == "__main__":
     main()
