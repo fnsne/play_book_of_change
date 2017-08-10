@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from random import randint
 
+
 def divide2(total):
     #print "\n--------分二"
     left = randint(1,total-1)
@@ -36,9 +37,9 @@ def detect_ood(rem):
 
 def print_ood_even(num):
     if num%2 == 1:
-        print "奇"
+        print "奇",
     else:
-        print "偶"
+        print "偶",
 
 def get_yao(three_nums):
     odd = 0
@@ -56,41 +57,41 @@ def get_yao(three_nums):
         return 1
     if odd == 0:
         return -2
+def showYao(yao):
+    if yao == -2:
+        print "變", "- -"
+    if yao == -1:
+        print "　", "- -"
+    if yao == 1:
+        print "　", "---"
+    if yao == 2:
+        print "變", "---"
+def showGua(gua):
+    for i in range(0,6):
+        showYao(gua[i])
 
 def main():
     total = 50
-    print "========大衍之數五十"
-    print "total : ", total
-    
-    print "\n========其用四十有九"
     total -= 1
     taiji = 1
     temp = [0,0,0]
     hexagram = [0,0,0,0,0,0]
 
-    print "total : ", total
-    print "taiji : ", taiji
-
-    #三變
-    print "\n三變\n\n"
     for j in range(0,6):
         total = 49
         for i in range(0,3):
-           print "total :", total
            left, right = divide2(total)
            left, right = put1(left,right)
            left_rem, right_rem = mod4(left,right)
            rem = left_rem + right_rem
-           print "叻 :", rem, "\n"
            total -= rem
            temp[i] = detect_ood(rem)
         for i in range(0,3):
            print_ood_even(temp[i])
+        print "\n"
         hexagram[j] = get_yao(temp)
 
     print "得卦 :"
-    for i in range(0,6):
-        print hexagram[i]
-        
+    showGua(hexagram)
 if __name__ == "__main__":
     main()
